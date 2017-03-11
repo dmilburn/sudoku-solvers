@@ -7,10 +7,10 @@ class Board
 
   def format_board(board_string)
     board = board_string.split("")
-    board.map.with_index do |cell, index|
+    board.map.with_index do |cell, i|
         value = cell != "-" ? cell : nil
-        row = index/@size
-        column = index % @size
+        row = i/@size
+        column = i % @size
         Cell.new({value: value, column: column, row: row})
     end.each_slice(@size).to_a
   end
