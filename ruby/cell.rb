@@ -1,6 +1,6 @@
 class Cell
 
-  attr_reader :value
+  attr_reader :value, :box
 
   def initialize(args = {})
     @value = args[:value]

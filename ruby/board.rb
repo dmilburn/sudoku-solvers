@@ -22,6 +22,12 @@ class Board
     @board.transpose[index]
   end
 
+  def box(index)
+    @board.flatten.select do |cell|
+      cell.box == index
+    end
+  end
+
   def to_s
     @board.map do |row|
       row.map do |cell|
