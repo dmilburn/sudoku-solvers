@@ -4,6 +4,11 @@ class Board
     @board = format_board(board_string)
   end
 
+  def solved?
+    all_spaces_full?
+  end
+
+
   def format_board(board_string)
     board = board_string.split("")
     board.map.with_index do |cell, i|
