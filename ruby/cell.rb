@@ -4,7 +4,10 @@ class Cell
 
   def initialize(args = {})
     @value = args[:value]
+    @column = args[:column]
+    @row = args[:row]
   end
+
 end
 
 

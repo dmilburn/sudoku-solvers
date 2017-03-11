@@ -1,5 +1,6 @@
 require_relative 'board'
 require_relative 'cell'
+require 'pry'
 
 board_strings = File.readlines('../boards.txt')
 

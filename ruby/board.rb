@@ -1,14 +1,18 @@
 class Board
   def initialize(board_string)
+    @size = 9
     @board = format_board(board_string)
+    binding.pry
   end
 
   def format_board(board_string)
     board = board_string.split("")
-    board.map do |cell|
+    board.map.with_index do |cell, index|
         value = cell != "-" ? cell : nil
-        Cell.new({value: value})
-    end.each_slice(9).to_a
+        row = index/@size
+        column = index % @size
+        Cell.new({value: value, column: column, row: row})
+    end.each_slice(@size).to_a
   end
 
   def row(index)
