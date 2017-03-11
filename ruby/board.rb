@@ -8,6 +8,51 @@ class Board
     all_spaces_full?
   end
 
+  def all_spaces_full?
+    @board.all?{|row| row.all?{|cell| cell.value }}
+  end
+
+  def solve
+    until solved?
+      simple_solve
+    end
+  end
+
+  def simple_solve
+    @board.each_with_index do |line, row|
+      line.each_with_index do |cell, column|
+        if cell.value.nil?
+          possibilities = find_possibilities(cell)
+          if possibilities.length == 1
+            cell.value = possibilities[0]
+          end
+        end
+      end
+    end
+  end
+
+  def find_possibilities(cell)
+    ("1".."9").to_a - impossibilities_for_cell(cell)
+  end
+
+  def impossibilities_for_cell(cell)
+    current_row = used_in_row(cell.row).to_set
+    current_col = used_in_column(cell.column).compact.to_set
+    current_box = used_in_box(cell.box).compact.to_set
+    (current_row + current_col + current_box).to_a
+  end
+
+  def used_in_row(row)
+    row(row).map{|cell| cell.value}.compact
+  end
+
+  def used_in_column(column)
+    column(column).map{|cell| cell.value}.compact
+  end
+
+  def used_in_box(box)
+    box(box).map{|cell| cell.value}.compact
+  end
 
   def format_board(board_string)
     board = board_string.split("")
