@@ -19,4 +19,12 @@ class Board
     @board.transpose[index]
   end
 
+  def to_s
+    @board.map do |row|
+      row.map do |cell|
+        cell.value ? cell.value : "-"
+      end.join(" ")
+    end.join("\n")
+  end
+
 end
