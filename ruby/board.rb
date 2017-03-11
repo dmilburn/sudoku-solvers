@@ -2,7 +2,6 @@ class Board
   def initialize(board_string)
     @size = 9
     @board = format_board(board_string)
-    binding.pry
   end
 
   def format_board(board_string)
