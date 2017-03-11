@@ -11,6 +11,12 @@ class Board
     end.each_slice(9).to_a
   end
 
-end
+  def row(index)
+    @board[index]
+  end
 
-# it'd be helpful to say, board.box[0] and be given an array
+  def column(index)
+    @board.transpose[index]
+  end
+
+end
